@@ -1,0 +1,39 @@
+<!DOCTYPE HTML5>
+<HTML>
+<head>
+</head>
+<body>
+<div>
+<form action = "addgrouptodb"  method = 'post'>
+{% csrf_token %}
+group name <input type = "text" name = "grpname"></br>
+<div id = "division">
+<input type = "text" name = 'email_0' placeholder="E-mail"></br>
+</div>
+<button type = "button" onclick = "myfunction()">AddNew</button>
+<input type = "submit">
+</form>
+</div>
+<div id = "childdiv">
+<input type = "text" name = 'email' placeholder="E-mail"></br>
+</div>
+<script>
+count=-1;
+arr = [];
+var i = 0;
+for(i=1;i<=1000;i++){
+	arr.push("email_"+(i).toString(10))
+}
+function myfunction(){
+	count=count + 1;
+	var div1 = document.createElement("div");
+	var s = "<input type = 'text' name = ";
+	s = s.concat(arr[count])
+	s=s.concat(" placeholder='E-mail'></br>")
+	div1.innerHTML = s;
+	document.getElementById("division").appendChild(div1);
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML5>
+<html>
+<head>
+<h3>
+Welcome To EMAIL Automater
+</h3>
+<title>
+INDEX
+</title>
+</head>
+<body>
+<form action = "Home\" method = 'post'>
+{% csrf_token %}
+<input type = 'text' name = 'user_name' placeholder="userame"></br>
+<input type = 'password' name = 'password' placeholder="password"></br>
+<input type = "submit">
+</form>
+<form action = "accounts\register" method = 'post'>
+{% csrf_token %}
+<button type="submit">
+REGISTER
+</button>
+</body>
+</html>

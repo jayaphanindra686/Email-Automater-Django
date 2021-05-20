@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        send email
+    </title>
+</head>
+<body style="background-color: #003300">
+    <h1 style="color:cyan">
+        Welcome {{grp.grp_name}}
+    </h1>
+    <div style="background-color:lightyellow">
+        <form action="send_email_msg" method="post">
+            {% csrf_token %}
+            {% for email in grp.email_list %}
+            {% if forloop.counter == 1 %}
+            <div>
+            <b>No of Emails =</b>
+            <input type="text" id="em_number" value = {{email}} name = "email_count" readonly />
+            </div>
+            <br />   <p> enter your message here </p>
+
+            <button type="button" onclick="copy()">Copy to all</button>
+            <button>Send Email</button>
+            {% else %}
+            {% if forloop.counter|divisibleby:2 %}<p><textarea name={{email}} id = {{email}}_id rows="5" cols="100"></textarea></p>{% else %}<p><input type="text" name={{email.EMAIL}}_addr value={{email.EMAIL}} readonly /></p>{% endif %}{% endif %}
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    var no_of_emails
+    function copy() {
+        no_of_emails = document.getElementById("em_number").value;
+        no_of_emails = parseInt(no_of_emails);
+        text = document.getElementById("email_0_id").value;
+        for (var i = 1; i <= no_of_emails; i++) {
+            document.getElementById("email_" + i.toString() + "_id").value = text;
+        }
+    }
+</script>

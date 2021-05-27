@@ -9,12 +9,13 @@ Home
 <body>
     <div style="background-color:cyan">
         Your groups:
-        {% for email in emails %}
-        {% if forloop.counter|divisibleby:2 %}{% for eml in email %}<p>{{eml.EMAIL}}</p>{% endfor %}{% else %}<form action="send_email" method="post">{% csrf_token %}<input type="textbox" name="grp_name" value={{email}} readonly="readonly" /><input type="submit" /></form>{% endif %}
-        {% endfor %}
         <form action="addgroup">
             <button>Add Group</button>
         </form>
+
+        {% for email in emails %}
+        {% if forloop.counter|divisibleby:2 %}{% for eml in email %}<p>{{eml.EMAIL}}</p>{% endfor %}{% else %}<form action="send_email" method="post">{% csrf_token %}<input type="textbox" name="grp_name" value={{email}} readonly="readonly" /><input type="submit" /></form>{% endif %}
+        {% endfor %}
     </div>
 </body>
 </html>
